@@ -10,7 +10,7 @@
   },
   "keywords": [
     "Electron",
-	"React",
+    "React",
     "Node.JS",
     "workshop"
   ],
@@ -19,15 +19,15 @@
   "bugs": {
     "url": "https://github.com/Serg-Eyy/electron_workshop_app/issues"
   },
-  "homepage": "https://github.com/Serg-Eyy/electron_workshop_app#readme", 
-  "scripts":{
-	"web": "react-scripts start",
-	"electron": "set NODE_ENV=dev&& nodemon --watch * --exec \"electron .\"",
-	"dev": "concurrently \"npm web run\" \" wait-on http://localhost:3000 && npm run start\"",
-	"build": "react-scripts build",
-	"pack": "electron-builder --dir",
-	"test": "react-scripts test",
-	"eject": "react-scripts eject"
+  "homepage": "https://github.com/Serg-Eyy/electron_workshop_app#readme",
+  "scripts": {
+    "web": "react-scripts start",
+    "electron": "set NODE_ENV=dev&& nodemon --watch * --exec \"electron .\"",
+    "dev": "concurrently \"npm run web\" \"wait-on http://localhost:3000 && npm run electron\"",
+    "build": "react-scripts build",
+    "pack": "electron-builder --dir",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,12 +38,19 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-    "dependencies": {
+  "dependencies": {
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
-    "react-scripts": "2.1.4"
+    "react-scripts": "2.1.4",
+    "electron-log": "^3.0.1",
+    "electron-updater": "^4.0.6",
+    "electron-window-state": "^5.0.3"
   },
   "devDependencies": {
-    "electron": "^4.0.4"
+    "concurrently": "^4.1.0",
+    "wait-on": "^3.2.0",
+    "electron": "^4.0.4",
+    "electron-debug": "^2.1.0",
+    "electron-devtools-installer": "^2.2.4"
   }
 }

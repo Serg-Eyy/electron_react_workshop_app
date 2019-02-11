@@ -30,7 +30,7 @@ mkdir eApp
 npm i -D electron
 touch ./eApp/main.js
 ```
-To launch an Electron part along with React following lines of package.json must be added/replaced:
+To launch an Electron part along with React the following lines of package.json must be added/replaced:
 
 ```json
 {
@@ -38,7 +38,7 @@ To launch an Electron part along with React following lines of package.json must
     "scripts": {
         "web": "react-scripts start",
         "electron": "set NODE_ENV=dev&& nodemon --watch * --exec \"electron .\"",
-        "dev": "concurrently \"npm web run\" \" wait-on http://localhost:3000 && npm run start\"",
+        "dev": "concurrently \"npm run web\" \"wait-on http://localhost:3000 && npm run electron\"",
         "build": "react-scripts build",
         "pack": "electron-builder --dir",
         "test": "react-scripts test",
@@ -46,6 +46,11 @@ To launch an Electron part along with React following lines of package.json must
     }
 }
 ```
+as well as [concurrently](https://www.npmjs.com/package/concurrently) and [wait-on](https://www.npmjs.com/package/wait-on) packages must be installed:
+```
+npm i -D concurrently wait-on
+```
+
 
 Having this done 
 
