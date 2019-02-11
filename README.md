@@ -1,3 +1,81 @@
+# Sample application for Electron + React workshop
+
+
+Scaffolding of an Electorn+React App includes two stages:
+- generation of React App,
+- its extension with Electron.
+
+## Scaffolding of React App
+
+The easiest way to generate a standard React App without going deep into configuration is [create-react-app](https://github.com/facebook/create-react-app).
+
+To start with the first phase type
+
+```
+npx create-react-app my-app
+cd my-app
+```
+
+Having this done you recieve a ready to launch working React Web App. You can try and feel it by launching:
+
+```
+npm start
+```
+
+## Adding Electron part
+
+To keep things clear a separate folder must be allocated for an Electron App and install Electron:
+```
+mkdir eApp
+npm i -D electron
+touch ./eApp/main.js
+```
+To launch an Electron part along with React following lines of package.json must be added/replaced:
+
+```json
+{
+    "main": "./eApp/main.js",
+    "scripts": {
+        "web": "react-scripts start",
+        "electron": "set NODE_ENV=dev&& nodemon --watch * --exec \"electron .\"",
+        "dev": "concurrently \"npm web run\" \" wait-on http://localhost:3000 && npm run start\"",
+        "build": "react-scripts build",
+        "pack": "electron-builder --dir",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    }
+}
+```
+
+Having this done 
+
+### `npm run web` 
+	can be used to start React part of the app in browser (with hot-reload),
+
+### `npm run electron` 
+	can be used to start Electron part of the app (with hot-reload),
+
+### `npm run dev` 
+	starts full application in development mode,
+
+### `npm run build`
+	builds the app for production to the `build` folder,	
+
+### `npm run test`
+	runs test of the React part of application,	
+	
+### `npm run pack`
+	packs the app in one bundle and creates executive files,	
+	
+### `npm run eject`
+	if you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+	Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. 
+	All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+	**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+	
+
+*** to be deleted ***	
+	
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
